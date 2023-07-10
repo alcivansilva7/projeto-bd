@@ -1,0 +1,7 @@
+import os
+
+APP_DIR = os.path.dirname(os.path.abspath(__file__))
+
+CODE_PAGE = "utf-8"
+
+SEPARATOR = ";"
