@@ -20,7 +20,7 @@ def lerArquivo(nomeArquivo: str):
                 linha = arq_.readline()[:-1]
                 if not linha: break
                 linha = linha.split(SEPARATOR)
-                dados_retorno[linha[7]] = dict(zip(cabecalho, linha))
+                dados_retorno[linha[9]] = dict(zip(cabecalho, linha))
             lido = True
         arq_.close()
     finally:

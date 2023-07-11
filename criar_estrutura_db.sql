@@ -3,57 +3,68 @@ CREATE DATABASE ifrn;
 CREATE TABLE cargo(
     id_cargo    SERIAL NOT NULL,
     nome_cargo  VARCHAR(255),
-    CONSTRAINT pk_id_cargo PRIMARY KEY (id_cargo)
+    CONSTRAINT pk_id_cargo PRIMARY KEY (id_cargo),
+    CONSTRAINT un_nome_cargo UNIQUE (nome_cargo)
 );
 CREATE TABLE campus(
     id_campus     SERIAL NOT NULL,
     nome_campus   VARCHAR(10) NOT NULL,
-    CONSTRAINT pk_id_campus PRIMARY KEY (id_campus)
+    CONSTRAINT pk_id_campus PRIMARY KEY (id_campus),
+    CONSTRAINT un_nome_campus UNIQUE (nome_campus)
+    
 );
 CREATE TABLE jornada_trabalho(
     id_jornada  SERIAL NOT NULL,
     jornada     VARCHAR(255) NOT NULL,
-    CONSTRAINT pk_id_jornada PRIMARY KEY (id_jornada)
+    CONSTRAINT pk_id_jornada PRIMARY KEY (id_jornada),
+    CONSTRAINT un_jornada UNIQUE (jornada)
 );
 CREATE TABLE setor_siape(
     id_setor    SERIAL NOT NULL,
     nome_setor  VARCHAR(15) DEFAULT '-' NOT NULL,
-    CONSTRAINT pk_id_setor PRIMARY KEY (id_setor)
+    CONSTRAINT pk_id_setor PRIMARY KEY (id_setor),
+    CONSTRAINT un_nome_setor UNIQUE (nome_setor)
 );
 CREATE TABLE setor_suap(
     id_setor_suap   SERIAL NOT NULL,
     nome_setor_suap VARCHAR(15) DEFAULT '-' NOT NULL,
-    CONSTRAINT pk_id_setor_suap PRIMARY KEY (id_setor_suap)
+    CONSTRAINT pk_id_setor_suap PRIMARY KEY (id_setor_suap),
+    CONSTRAINT un_nome_setor_suap UNIQUE (nome_setor_suap)
 );
 CREATE TABLE disciplina_ingresso(
     id_disciplina   SERIAL NOT NULL,
     nome_disciplina VARCHAR(100) NOT NULL,
-    CONSTRAINT pk_id_disciplina PRIMARY KEY (id_disciplina)
+    CONSTRAINT pk_id_disciplina PRIMARY KEY (id_disciplina),
+    CONSTRAINT un_nome_disciplina UNIQUE (nome_disciplina)
 );
 CREATE TABLE curriculo_lattes(
     id_lattes   SERIAL NOT NULL,
     link_lattes VARCHAR(255) DEFAULT '-' NOT NULL,
-    CONSTRAINT pk_id_lattes PRIMARY KEY (id_lattes)
+    CONSTRAINT pk_id_lattes PRIMARY KEY (id_lattes),
+    CONSTRAINT un_link_lattes UNIQUE (link_lattes)
 );
 CREATE TABLE telefones_institucionais(
     id_telefones    SERIAL NOT NULL,
-    telefones       VARCHAR(255) DEFAULT '-' NOT NULL,
+    telefones       VARCHAR(1500) DEFAULT '-' NOT NULL,
     CONSTRAINT pk_id_telefones PRIMARY KEY (id_telefones)
 );
 CREATE TABLE funcao(
     id_funcao   SERIAL NOT NULL,
     nome_funcao VARCHAR(255) DEFAULT '-' NOT NULL,
-    CONSTRAINT pk_id_funcao PRIMARY KEY (id_funcao)
+    CONSTRAINT pk_id_funcao PRIMARY KEY (id_funcao),
+    CONSTRAINT un_nome_funcao UNIQUE (nome_funcao)
 );
 CREATE TABLE url_fotos(
     id_fotos    SERIAL NOT NULL,
     link_fotos  VARCHAR(255) NOT NULL,
-    CONSTRAINT pk_id_fotos PRIMARY KEY (id_fotos)
+    CONSTRAINT pk_id_fotos PRIMARY KEY (id_fotos),
+    CONSTRAINT un_link_fotos UNIQUE (link_fotos)
 );
 CREATE TABLE categoria(
     id_categoria    SERIAL NOT NULL,
     nome_categoria  VARCHAR(255) NOT NULL,
-    CONSTRAINT pk_id_categoria PRIMARY KEY (id_categoria)
+    CONSTRAINT pk_id_categoria PRIMARY KEY (id_categoria),
+    CONSTRAINT un_nome_categoria UNIQUE (nome_categoria)
 );
 CREATE TABLE servidor(
     matricula_servidor  BIGINT NOT NULL,
