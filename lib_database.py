@@ -289,8 +289,9 @@ def insereServidor(campos: tuple, valores: tuple, conexao):
     strSQL = strSQL[:-2]
     strSQL += f') VALUES {valores} RETURNING matricula_servidor;'
     try:
+        print(strSQL)
         cursorTable = conexao.cursor()
-        cursorTable.execyte(strSQL)
+        cursorTable.execute(strSQL)
     except:
         conexao.rollback()
         idRetorno = f'ERRO: {sys.exc_info()[0]} \n{strSQL} \n{valores}\n\n'

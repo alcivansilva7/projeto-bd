@@ -35,7 +35,7 @@ if not retConexao[0]:
 
 connDB = retConexao[1]
 
-'''
+
 print('\nInserindo dados na tabela CATEGORIA')
 dictCategoria = dict()
 for categoria in setCategoria:
@@ -73,7 +73,6 @@ for setorSiape in setSetorSiape:
     dictSetorSiape[setorSiape] = retorno[1]
     print(dictSetorSiape[setorSiape])
 
-'''
 print('\nInserindo dados na tabela DISCIPLINA_INGRESSO')
 dictDisciplinaIngresso = dict()
 for disciplinaIngresso in setDisciplinaIngresso:
@@ -85,7 +84,7 @@ for disciplinaIngresso in setDisciplinaIngresso:
     dictDisciplinaIngresso[disciplinaIngresso] = retorno[1]
     print(dictDisciplinaIngresso[disciplinaIngresso])
 
-'''
+
 print('\nInserindo dados na tabela SETOR_SUAP')
 dictSetorSuap = dict()
 for setorSuap in setSetorSuap:
@@ -165,9 +164,10 @@ for urlFotos in setUrlFoto:
 
 print('\nInserindo dados na tabela SERVIDOR')
 tupleCampos = tuple(['matricula_servidor'   ,   'nome'          ,   'id_campus'     ,
-                     'id_cargo'             ,   'id_disciplina' ,   'id_setor_suap' ,
-                     'id_jornada'           ,   'id_telefones'  ,   'id_lattes'     ,
-                     'id_categoria'         ,   'id_fotos'      ,   'id_funcao'])
+                     'id_cargo'             ,   'id_setor'      ,'id_disciplina'    ,
+                     'id_setor_suap'        ,   'id_jornada'    ,   'id_telefones'  ,
+                     'id_lattes'            ,   'id_categoria'  ,   'id_fotos'      ,   
+                     'id_funcao'])
 
 
 for k,v in dados_lidos.items():
@@ -202,5 +202,5 @@ for k,v in dados_lidos.items():
     if not retorno[0]: print(retorno[1])
 
 
-'''
+
 connDB.close()
