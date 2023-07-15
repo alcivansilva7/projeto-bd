@@ -163,11 +163,11 @@ for urlFotos in setUrlFoto:
 
 
 print('\nInserindo dados na tabela SERVIDOR')
-tupleCampos = tuple(['matricula_servidor'   ,   'nome'          ,   'id_campus'     ,
-                     'id_cargo'             ,   'id_setor'      ,'id_disciplina'    ,
-                     'id_setor_suap'        ,   'id_jornada'    ,   'id_telefones'  ,
-                     'id_lattes'            ,   'id_categoria'  ,   'id_fotos'      ,   
-                     'id_funcao'])
+tupleCampos = tuple(['id_categoria'         ,   'id_cargo'      ,  'id_setor'       ,
+                     'id_disciplina'        ,   'id_setor_suap' ,  'nome'           ,
+                     'id_funcao'            ,   'id_jornada'    ,  'id_telefones'   ,
+                     'matricula_servidor'   ,   'id_lattes'     ,  'id_campus'      ,   
+                     'id_fotos'])
 
 
 for k,v in dados_lidos.items():
@@ -194,6 +194,7 @@ for k,v in dados_lidos.items():
     dados_lidos[k]['curriculo_lattes']           = dictCurriculoLattes[dados_lidos[k]['curriculo_lattes']]
     dados_lidos[k]['campus']                     = dictCampus[dados_lidos[k]['campus']]
     dados_lidos[k]['url_foto_75x100']            = dictUrlFotos[dados_lidos[k]['url_foto_75x100']]
+
 
     tupleValores = tuple(v.values())
 
