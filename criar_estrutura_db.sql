@@ -27,7 +27,7 @@ CREATE TABLE setor_suap(
 );
 CREATE TABLE disciplina_ingresso(
     id_disciplina   SERIAL NOT NULL,
-    nome_disciplina VARCHAR(1500) NOT NULL,
+    nome_disciplina VARCHAR(255) NOT NULL,
     CONSTRAINT pk_id_disciplina PRIMARY KEY (id_disciplina)
 );
 CREATE TABLE curriculo_lattes(
