@@ -4,49 +4,49 @@ CREATE DATABASE ifrn;
 --CREATE SCHEMA public;
 
 CREATE TABLE cargo(
-    id_cargo    SERIAL NOT NULL,
+    id_cargo    SERIAL,
     nome_cargo  VARCHAR(255),
     CONSTRAINT pk_id_cargo PRIMARY KEY (id_cargo),
     CONSTRAINT un_nome_cargo UNIQUE(nome_cargo)
 );
 CREATE TABLE campus(
-    id_campus     SERIAL NOT NULL,
+    id_campus     SERIAL,
     nome_campus   VARCHAR(10) NOT NULL,
     CONSTRAINT pk_id_campus PRIMARY KEY (id_campus),
     CONSTRAINT un_nome_campus UNIQUE(nome_campus)
 );
 CREATE TABLE jornada_trabalho(
-    id_jornada  SERIAL NOT NULL,
+    id_jornada  SERIAL,
     jornada     VARCHAR(255) NOT NULL,
     CONSTRAINT pk_id_jornada PRIMARY KEY (id_jornada),
     CONSTRAINT un_jornada UNIQUE(jornada)
 );
 CREATE TABLE setor_siape(
-    id_setor    SERIAL NOT NULL,
+    id_setor    SERIAL,
     nome_setor  VARCHAR(15) DEFAULT '------' NOT NULL,
     CONSTRAINT pk_id_setor PRIMARY KEY (id_setor),
     CONSTRAINT un_nome_setor UNIQUE(nome_setor)
 );
 CREATE TABLE setor_suap(
-    id_setor_suap   SERIAL NOT NULL,
+    id_setor_suap   SERIAL,
     nome_setor_suap VARCHAR(15) DEFAULT '------' NOT NULL,
     CONSTRAINT pk_id_setor_suap PRIMARY KEY (id_setor_suap),
     CONSTRAINT un_nome_setor_suap UNIQUE(nome_setor_suap)
 );
 CREATE TABLE disciplina_ingresso(
-    id_disciplina   SERIAL NOT NULL,
+    id_disciplina   SERIAL,
     nome_disciplina VARCHAR(255) NOT NULL,
     CONSTRAINT pk_id_disciplina PRIMARY KEY (id_disciplina),
     CONSTRAINT un_nome_disciplina UNIQUE(nome_disciplina)
 );
 CREATE TABLE funcao(
-    id_funcao   SERIAL NOT NULL,
+    id_funcao   SERIAL,
     nome_funcao VARCHAR(255) DEFAULT '------' NOT NULL,
     CONSTRAINT pk_id_funcao PRIMARY KEY (id_funcao),
     CONSTRAINT un_nome_funcao UNIQUE(nome_funcao)
 );
 CREATE TABLE categoria(
-    id_categoria    SERIAL NOT NULL,
+    id_categoria    SERIAL,
     nome_categoria  VARCHAR(255) NOT NULL,
     CONSTRAINT pk_id_categoria PRIMARY KEY (id_categoria),
     CONSTRAINT un_nome_categoria UNIQUE(nome_categoria)
