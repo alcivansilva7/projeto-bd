@@ -157,56 +157,6 @@ def insereDisciplina(descricao: str, conexao):
         return inserido, idRetorno
 
 
-def insereCurriculo(descricao: str, conexao):
-    inserido = False
-    idRetorno = None
-    strSQL = f'INSERT INTO curriculo_lattes (link_lattes) VALUES (\'{descricao}\') RETURNING id_lattes;'
-    cursorTable = conexao.cursor()
-    try:
-        cursorTable.execute(strSQL)
-    except psycopg2.erros.UniqueViolation:
-        conexao.rollback()
-        strSQL = f'SELECT link_lattes FROM curriculo_lattes WHERE link_lattes = \'{descricao}\';'
-        cursorTable.execute(strSQL)
-        inserido =  True
-        idRetorno = cursorTable.fetchone()[0]
-    except:
-        conexao.rollback()
-        idRetorno = f'ERRO (Tabela CURRICULO_LATTES): {sys.exc_info()[0]} \n{descricao} \n\n'
-    else:
-        inserido = True
-        idRetorno = cursorTable.fetchone()[0]
-        conexao.commit()
-    finally:
-        return inserido, idRetorno
-
-
-
-def insereTelefones(descricao: str, conexao):
-    inserido = False
-    idRetorno = None
-    strSQL = f'INSERT INTO telefones_institucionais (telefones) VALUES (\'{descricao}\') RETURNING id_telefones;'
-    cursorTable = conexao.cursor()
-    try:
-        cursorTable.execute(strSQL)
-    except psycopg2.erros.UniqueViolation:
-        conexao.rollback()
-        strSQL = f'SELECT telefones FROM telefones_institucionais WHERE telefones = \'{descricao}\';'
-        cursorTable.execute(strSQL)
-        inserido =  True
-        idRetorno = cursorTable.fetchone()[0]
-    except:
-        conexao.rollback()
-        idRetorno = f'ERRO (Tabela TELEFONES_INSTITUCIONAIS): {sys.exc_info()[0]} \n{descricao} \n\n'
-    else:
-        inserido = True
-        idRetorno = cursorTable.fetchone()[0]
-        conexao.commit()
-    finally:
-        return inserido, idRetorno
-    
-
-
 def insereFuncao(descricao: str, conexao):
     inserido = False
     idRetorno = None
@@ -223,31 +173,6 @@ def insereFuncao(descricao: str, conexao):
     except:
         conexao.rollback()
         idRetorno = f'ERRO (Tabela FUNCAO): {sys.exc_info()[0]} \n{descricao} \n\n'
-    else:
-        inserido = True
-        idRetorno = cursorTable.fetchone()[0]
-        conexao.commit()
-    finally:
-        return inserido, idRetorno
-    
-
-
-def insereFotos(descricao: str, conexao):
-    inserido = False
-    idRetorno = None
-    strSQL = f'INSERT INTO url_fotos (link_fotos) VALUES (\'{descricao}\') RETURNING id_fotos;'
-    cursorTable = conexao.cursor()
-    try:
-        cursorTable.execute(strSQL)
-    except psycopg2.erros.UniqueViolation:
-        conexao.rollback()
-        strSQL = f'SELECT link_fotos FROM url_fotos WHERE link_fotos = \'{descricao}\';'
-        cursorTable.execute(strSQL)
-        inserido =  True
-        idRetorno = cursorTable.fetchone()[0]
-    except:
-        conexao.rollback()
-        idRetorno = f'ERRO (Tabela URL_FOTOS): {sys.exc_info()[0]} \n{descricao} \n\n'
     else:
         inserido = True
         idRetorno = cursorTable.fetchone()[0]
@@ -289,7 +214,6 @@ def insereServidor(campos: tuple, valores: tuple, conexao):
     strSQL = strSQL[:-2]
     strSQL += f') VALUES {valores} RETURNING matricula_servidor;'
     try:
-        print(strSQL)
         cursorTable = conexao.cursor()
         cursorTable.execute(strSQL)
     except:
