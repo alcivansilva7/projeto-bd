@@ -225,3 +225,74 @@ def insereServidor(campos: tuple, valores: tuple, conexao):
         conexao.commit()
     finally:
         return inserido, idRetorno
+    
+def consultaServidoresCampus(conexao):
+    consultado = False
+    idRetorno = None
+    strSQL = 'SELECT * FROM servidores_campus ORDER BY sigla;'
+    try:
+        cursorTable = conexao.cursor()
+        cursorTable.execute(strSQL)
+    except:
+        conexao.rollback()
+        idRetorno = f'ERRO: {sys.exc_info()[0]} \n{strSQL} \n'
+    else:
+        consultado = True
+        idRetorno = cursorTable.fetchall()
+        conexao.commit()
+    finally:
+        return consultado, idRetorno
+
+
+
+def consultaDocenteDisciplina(conexao):
+    consultado = False
+    idRetorno = None
+    strSQL = 'SELECT * FROM docentes_disciplinas;'
+    try:
+        cursorTable = conexao.cursor()
+        cursorTable.execute(strSQL)
+    except:
+        conexao.rollback()
+        idRetorno = f'ERRO: {sys.exc_info()[0]} \n{strSQL} \n'
+    else:
+        consultado = True
+        idRetorno = cursorTable.fetchall()
+        conexao.commit()
+    finally:
+        return consultado, idRetorno
+    
+
+def consultaDocenteDisciplina(conexao):
+    consultado = False
+    idRetorno = None
+    strSQL = 'SELECT * FROM docentes_disciplinas;'
+    try:
+        cursorTable = conexao.cursor()
+        cursorTable.execute(strSQL)
+    except:
+        conexao.rollback()
+        idRetorno = f'ERRO: {sys.exc_info()[0]} \n{strSQL} \n'
+    else:
+        consultado = True
+        idRetorno = cursorTable.fetchall()
+        conexao.commit()
+    finally:
+        return consultado, idRetorno
+    
+def consultaDisciplinaCampus(conexao):
+    consultado = False
+    idRetorno = None
+    strSQL = 'SELECT * FROM disciplinas_campus ORDER BY sigla;'
+    try:
+        cursorTable = conexao.cursor()
+        cursorTable.execute(strSQL)
+    except:
+        conexao.rollback()
+        idRetorno = f'ERRO: {sys.exc_info()[0]} \n{strSQL} \n'
+    else:
+        consultado = True
+        idRetorno = cursorTable.fetchall()
+        conexao.commit()
+    finally:
+        return consultado, idRetorno
