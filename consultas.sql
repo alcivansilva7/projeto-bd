@@ -9,3 +9,16 @@ GROUP BY	campus.nome_campus,
 			categoria.nome_categoria;
 			
 SELECT * FROM servidores_campus ORDER BY sigla;
+
+
+
+CREATE VIEW docentes_disciplinas AS	
+	SELECT	servidor.nome,
+			disciplina_ingresso.nome_disciplina
+  	  FROM	servidor
+INNER JOIN  disciplina_ingresso ON servidor.id_disciplina = disciplina_ingresso.id_disciplina
+INNER JOIN	categoria ON categoria.id_categoria = servidor.id_categoria
+	 WHERE 	categoria.nome_categoria = 'docente'
+  ORDER BY	disciplina_ingresso.nome_disciplina;
+  
+SELECT * FROM docentes_disciplinas;
