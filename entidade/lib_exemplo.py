@@ -1,5 +1,5 @@
 import sys
-from constantes import *
+from entidade.constantes import *
 
 
 def lerArquivo(nomeArquivo: str):
