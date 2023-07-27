@@ -1,5 +1,9 @@
+#Importa os resultados das consultas
 from dao.lib_database import *
+#Importa a biblioteca dos sistema
+import sys
 
+#Exibe os resultados da consulta de tipos de servidores por campus
 def servidoresCampus(conexaoDB):
     print('\nConsultando tipos de servidores por campus')
     retorno = consultaServidoresCampus(conexaoDB)
@@ -10,6 +14,7 @@ def servidoresCampus(conexaoDB):
         print(retorno[0])
         sys.exit()
 
+#Exibe os resultados da consulta de docentes por disciplina
 def docentesDisciplina(conexaoDB):
     print('\nConsultando docentes por disciplina')
     retorno = consultaDocenteDisciplina(conexaoDB)
@@ -20,6 +25,7 @@ def docentesDisciplina(conexaoDB):
         print(retorno[0])
         sys.exit()
 
+#Exibe os resultados da consulta de quantidade de docentes por disciplina e por campus
 def quantidadeDocentesDisciplinas(conexaoDB):
     print('\nConsultando quantidade de docentes por disciplinas e por campus')
     retorno = consultaDisciplinaCampus(conexaoDB)

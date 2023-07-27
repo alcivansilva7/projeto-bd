@@ -1,5 +1,7 @@
+#Importa as bibliotecas necessarias para fazer a conexão com o banco e as bibliotecas do sistema
 import psycopg2, sys
 
+#Abre a conexão de fato com o banco
 def conectaDB(server: str, database: str, dbuser: str, userpwd: str):
     conectado = False
     conexao = None
@@ -12,6 +14,7 @@ def conectaDB(server: str, database: str, dbuser: str, userpwd: str):
     finally:
         return conectado, conexao
     
+#Insere de fato os dados na tabela CARGO    
 def insereCargo(descricao: str, conexao):
     inserido = False
     idRetorno = None
@@ -35,7 +38,7 @@ def insereCargo(descricao: str, conexao):
     finally:
         return inserido, idRetorno
     
-
+#Insere de fato os dados na tabela CAMPUS
 def insereCampus(descricao: str, conexao):
     inserido = False
     idRetorno = None
@@ -59,7 +62,7 @@ def insereCampus(descricao: str, conexao):
     finally:
         return inserido, idRetorno
 
-
+#Insere de fato os dados na tabela JORNADA_TRABALHO
 def insereJornada(descricao: str, conexao):
     inserido = False
     idRetorno = None
@@ -83,7 +86,7 @@ def insereJornada(descricao: str, conexao):
     finally:
         return inserido, idRetorno
 
-
+#Insere de fato os dados na tabela SETOR_SIAPE
 def insereSiape(descricao: str, conexao):
     inserido = False
     idRetorno = None
@@ -107,8 +110,7 @@ def insereSiape(descricao: str, conexao):
     finally:
         return inserido, idRetorno
     
-
-
+#Insere de fato os dados na tabela SETOR_SUAP
 def insereSuap(descricao: str, conexao):
     inserido = False
     idRetorno = None
@@ -132,7 +134,7 @@ def insereSuap(descricao: str, conexao):
     finally:
         return inserido, idRetorno
 
-
+#Insere de fato os dados na tabela DISCIPLINA_INGRESSO
 def insereDisciplina(descricao: str, conexao):
     inserido = False
     idRetorno = None
@@ -156,7 +158,7 @@ def insereDisciplina(descricao: str, conexao):
     finally:
         return inserido, idRetorno
 
-
+#Insere de fato os dados na tabela FUNCAO
 def insereFuncao(descricao: str, conexao):
     inserido = False
     idRetorno = None
@@ -181,7 +183,7 @@ def insereFuncao(descricao: str, conexao):
         return inserido, idRetorno
     
 
-
+#Insere de fato os dados na tabela CATEGORIA
 def insereCategoria(descricao: str, conexao):
     inserido = False
     idRetorno = None
@@ -205,7 +207,7 @@ def insereCategoria(descricao: str, conexao):
     finally:
         return inserido, idRetorno
     
-
+#Insere de fato os dados na tabela SERVIDOR
 def insereServidor(campos: tuple, valores: tuple, conexao):
     inserido = False
     idRetorno = None
@@ -225,7 +227,8 @@ def insereServidor(campos: tuple, valores: tuple, conexao):
         conexao.commit()
     finally:
         return inserido, idRetorno
-    
+
+#Faz a consulta do tipo de servidores por campus
 def consultaServidoresCampus(conexao):
     consultado = False
     idRetorno = None
@@ -243,8 +246,7 @@ def consultaServidoresCampus(conexao):
     finally:
         return consultado, idRetorno
 
-
-
+#Faz a consulta de todos os docentes por disciplina
 def consultaDocenteDisciplina(conexao):
     consultado = False
     idRetorno = None
@@ -261,25 +263,8 @@ def consultaDocenteDisciplina(conexao):
         conexao.commit()
     finally:
         return consultado, idRetorno
-    
-
-def consultaDocenteDisciplina(conexao):
-    consultado = False
-    idRetorno = None
-    strSQL = 'SELECT * FROM docentes_disciplinas;'
-    try:
-        cursorTable = conexao.cursor()
-        cursorTable.execute(strSQL)
-    except:
-        conexao.rollback()
-        idRetorno = f'ERRO: {sys.exc_info()[0]} \n{strSQL} \n'
-    else:
-        consultado = True
-        idRetorno = cursorTable.fetchall()
-        conexao.commit()
-    finally:
-        return consultado, idRetorno
-    
+  
+#Faz a consulta da quantidade de docentes por disciplina e por campus    
 def consultaDisciplinaCampus(conexao):
     consultado = False
     idRetorno = None

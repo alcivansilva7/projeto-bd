@@ -1,19 +1,24 @@
+# Importa a bibioteca do sistema
 import sys
+# Importando as informações necessárias para poder inserir os dados no banco
 from entidade.lib_exemplo import *
 from dao.lib_database import *
 from entidade.constantes import *
 from entidade.conexao_db import *
 
-
+# Lê de fato o arquivo e insere os dados no banco de acordo com suas tabelas
+# Também verifica os que não há necessidade de repetir e insere no banco sem as repetições
 def inserirDados():
     retLeitura  = lerArquivo(APP_DIR + '\\dados_extraidos_recursos_servidores.csv')
 
+# Caso dê algum erro na leitura do arquivo encerra o programa
     if not retLeitura[0]:
         print(retLeitura[1])
         sys.exit()
 
     print('\nTratando os dados lidos')
     dados_lidos = retLeitura[1]
+# Gerando SETS com os dados a serem inseridos nas tabelas exceto na tabela SERVIDOR
 
     setCategoria                = set(map(lambda c: c['categoria'], dados_lidos.values()))
     setCargo                    = set(map(lambda c: c['cargo'], dados_lidos.values()))
@@ -24,17 +29,18 @@ def inserirDados():
     setJornadaTrabalho          = set(map(lambda c: c['jornada_trabalho'], dados_lidos.values()))
     setCampus                   = set(map(lambda c: c['campus'], dados_lidos.values()))
 
-
+# Abre a conexão com o banco
     retConexao = conectaDB(DB_HOST, DB_NAME, DB_USER, DB_PASS)
 
+# Encerra o programa caso haja algum erro na conexão e exibe o erro encontrado
     if not retConexao[0]:
         print(retConexao[1])
         sys.exit()
 
-
+# Armazenna os dados da conexão com o banco
     connDB = retConexao[1]
 
-
+# Insere os dados na tabela CATEGORIA
     print('\nInserindo dados na tabela CATEGORIA')
     dictCategoria = dict()
     for categoria in setCategoria:
@@ -45,6 +51,7 @@ def inserirDados():
             continue
         dictCategoria[categoria] = retorno[1]
 
+#Insere os dados na tabela CARGO
     print('\nInserindo dados na tabela CARGO')
     dictCargo = dict()
     for cargo in setCargo:
@@ -55,6 +62,7 @@ def inserirDados():
             continue
         dictCargo[cargo] = retorno[1]
 
+#Insere os dados na tabela SETOR_SIAPE
     print('\nInserindo dados na tabela SETOR_SIAPE')
     dictSetorSiape = dict()
     for setorSiape in setSetorSiape:
@@ -65,6 +73,7 @@ def inserirDados():
             continue
         dictSetorSiape[setorSiape] = retorno[1]
 
+#Insere os dados na tabela DISCIPLINA_INGRESSO
     print('\nInserindo dados na tabela DISCIPLINA_INGRESSO')
     dictDisciplinaIngresso = dict()
     for disciplinaIngresso in setDisciplinaIngresso:
@@ -75,7 +84,7 @@ def inserirDados():
             continue
         dictDisciplinaIngresso[disciplinaIngresso] = retorno[1]
 
-
+#Insere os dados na tabela SETOR SUAP
     print('\nInserindo dados na tabela SETOR_SUAP')
     dictSetorSuap = dict()
     for setorSuap in setSetorSuap:
@@ -86,7 +95,7 @@ def inserirDados():
             continue
         dictSetorSuap[setorSuap] = retorno[1]
 
-
+#Insere os dados na tabela FUNCAO
     print('\nInserindo dados na tabela FUNCAO')
     dictFuncao = dict()
     for funcao in setFuncao:
@@ -97,7 +106,7 @@ def inserirDados():
             continue
         dictFuncao[funcao] = retorno[1]
 
-
+#Insere os dados na tabela JORNADA_TRABALHO
     print('\nInserindo dados na tabela JORNADA_TRABALHO')
     dictJornadaTrabalho = dict()
     for jornadaTrabalho in setJornadaTrabalho:
@@ -108,6 +117,7 @@ def inserirDados():
             continue
         dictJornadaTrabalho[jornadaTrabalho] = retorno[1]
 
+#Insere os dados na tabela CAMPUS
     print('\nInserindo dados na tabela CAMPUS')
     dictCampus = dict()
     for campus in setCampus:
@@ -118,7 +128,7 @@ def inserirDados():
             continue
         dictCampus[campus] = retorno[1]
 
-
+#Insere os dados na tabela SERVIDOR
     print('\nInserindo dados na tabela SERVIDOR')
     tupleCampos = tuple(['id_categoria'         ,   'id_cargo'      ,  'id_setor'       ,
                         'id_disciplina'        ,   'id_setor_suap' ,  'nome'           ,
@@ -152,5 +162,5 @@ def inserirDados():
         retorno = insereServidor(tupleCampos, tupleValores, connDB)
 
         if not retorno[0]: print(retorno[1])
-
+#ENCERRA A CONEXÃO COM O BANCO
     connDB.close()

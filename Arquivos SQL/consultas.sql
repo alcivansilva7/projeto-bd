@@ -1,3 +1,4 @@
+--CRIA UMA VIEW DA CONSULTA
 CREATE VIEW servidores_campus AS
 	SELECT  campus.nome_campus as sigla,
 			categoria.nome_categoria as categoria,
@@ -7,11 +8,10 @@ INNER JOIN	campus ON servidor.id_campus = campus.id_campus
 INNER JOIN	categoria ON servidor.id_categoria = categoria.id_categoria
 GROUP BY	campus.nome_campus,
 			categoria.nome_categoria;
-			
+--FAZ A CONSULTA A PARTIR DA VIEW			
 SELECT * FROM servidores_campus ORDER BY sigla;
 
-
-
+--CRIA UMA VIEW DA CONSULTA
 CREATE VIEW docentes_disciplinas AS	
 	SELECT	servidor.nome,
 			disciplina_ingresso.nome_disciplina AS disciplina
@@ -20,10 +20,11 @@ INNER JOIN  disciplina_ingresso ON servidor.id_disciplina = disciplina_ingresso.
 INNER JOIN	categoria ON categoria.id_categoria = servidor.id_categoria
 	 WHERE 	categoria.nome_categoria = 'docente'
   ORDER BY	disciplina_ingresso.nome_disciplina;
-  
+
+--FAZ A CONSULTA A PARTIR DA VIEW
 SELECT * FROM docentes_disciplinas;
 
-
+--CRIA UMA VIEW DA CONSULTA
 CREATE VIEW disciplinas_campus AS	
 	SELECT	disciplina_ingresso.nome_disciplina AS disciplina,
 			campus.nome_campus as sigla,
@@ -35,5 +36,6 @@ INNER JOIN	campus ON servidor.id_campus = campus.id_campus
 	 WHERE 	categoria.nome_categoria = 'docente'
   GROUP BY	disciplina_ingresso.nome_disciplina,
   			campus.nome_campus;
-  
+
+--FAZ A CONSULTA A PARTIR DA VIEW
 SELECT * FROM disciplinas_campus ORDER BY sigla;

@@ -1,10 +1,12 @@
+#importa as bibliotecas e arquivos necessários para fazer as consultas e as inserções no banco
 import sys
 from entidade.conexao_db import *
 from entidade.lib_exemplo import *
 from view.exemplo_database import *
 from view.consultas import *
 
-
+#Cria um menu que chama as funções de inserção e consulta no banco
+#Também exibe os resultados das consultas
 def main():
     retConexao = conectaDB(DB_HOST, DB_NAME, DB_USER, DB_PASS)
 
