@@ -1,16 +1,16 @@
-# Banco de Dados :desktop computer:
+# Banco de Dados :desktop_computer:
 
 ### Objetivo:
 
-Este repostório foi criado para o projeto de conclusão disciplina de banco de dados.
-Os arquivos aqui contidos servem para executar o projeto, aqui constam arquivos de,
+Este repostório foi criado para o projeto de conclusão da disciplina de banco de dados.
+Os arquivos aqui contidos servem para executar o projeto, aqui constam arquivos de
 configuração e execução do projeto.
 
 ###### Para obter o repositório em sua máquina instale o git e execute o comando:
 
-'''shell
+```shell
 git clone https://github.com/alcivansilva7/projeto-bd.git
-'''
+```
 __Como Executar__
 
 1. Baixe e instale o __python__ em sua máquina para que você possa compilar os códigos python.
@@ -29,9 +29,9 @@ da consulta.
 o a senha e o usuário para os que você criou na instalação do banco.
 
 6. Entre no diretório raiz do projeto e execute o seguinte comando:
-'''shell
+```shell
 py-3 iniciar.py ou python3 iniciar.py
-'''
+```
 Ao fazer isso você irá executar o projeto, irá aparecer um menu,
 se for a primeira vez que você estiver executando o projeto
 escolha a opção 1 para que seja inserido os dados no banco e posteriormente
