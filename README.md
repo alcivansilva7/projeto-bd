@@ -37,4 +37,6 @@ se for a primeira vez que você estiver executando o projeto
 escolha a opção 1 para que seja inserido os dados no banco e posteriormente
 execute qualquer uma das outras opções.
 
+__OBS. O diagrama do banco de dados está no diretório Modelo Relacional__
+
 Em caso de duvidas entre em contato através do E-mail: alcivansilva7@gmail.com
