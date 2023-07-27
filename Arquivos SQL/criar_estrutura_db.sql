@@ -1,9 +1,6 @@
 --Cria o banco de dados
 CREATE DATABASE ifrn;
 
---DROP SCHEMA public CASCADE;
---CREATE SCHEMA public;
-
 -- Cria a tabela CARGO bem como suas chaves primária e chave única
 CREATE TABLE cargo(
     id_cargo    SERIAL,
