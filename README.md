@@ -37,6 +37,7 @@ se for a primeira vez que você estiver executando o projeto
 escolha a opção 1 para que seja inserido os dados no banco e posteriormente
 execute qualquer uma das outras opções.
 
-__OBS. O diagrama do banco de dados está no diretório Modelo Relacional__
+7. A seguir você verá o diagrama do banco que está localizado no diretório Modelo Relacional:
+<img src="/Modelo Relacional/DIAGRAMA DO BANCO.png">
 
 Em caso de duvidas entre em contato através do E-mail: alcivansilva7@gmail.com
